@@ -62,7 +62,7 @@ class ManageYAML:
 
 
     def update_yaml(self, req):
-        yaml_file = file(self.yaml_path, 'w')
+        yaml_file = open(self.yaml_path, 'w')
         pose_list = req.pose_list
         self.pose_dict = {}
         for elem in pose_list:
