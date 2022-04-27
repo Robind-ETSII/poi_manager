@@ -17,7 +17,7 @@ class ManageYAML:
         rospack = rospkg.RosPack()
         self.filename = rospy.get_param('~filename', 'test')
         self.folder = rospy.get_param('~folder', os.path.join(rospack.get_path('poi_manager'), 'config'))
-	self.yaml_path =  self.folder +'/'+ self.filename+'.yaml'
+        self.yaml_path =  self.folder +'/'+ self.filename+'.yaml'
 	
         self.pose_list = []
         self.pose_dict = {}
@@ -33,7 +33,7 @@ class ManageYAML:
             self.frame_id = rospy.get_param('~frame_id', 'map')
             self.marker_array_publisher = rospy.Publisher(self.filename+'/'+self.marker_topic, MarkerArray, queue_size=10)
 
-	rospy.loginfo('%s::_init_: config file path: %s',rospy.get_name(), self.yaml_path)
+        rospy.loginfo('%s::_init_: config file path: %s',rospy.get_name(), self.yaml_path)
 
     def start(self):
         while not rospy.is_shutdown() and self.publish_markers:
@@ -49,8 +49,8 @@ class ManageYAML:
                 self.pose_dict = {}
             f.close()
         except (IOError, yaml.YAMLError) as e:
-        	rospy.logerr(e)
-        	return 0
+            rospy.logerr(e)
+            return 0
 
     def manage_read_data(self):
         self.pose_list = []
